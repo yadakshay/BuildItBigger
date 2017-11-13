@@ -4,7 +4,7 @@ import android.content.Context;
 import android.content.Intent;
 import android.os.AsyncTask;
 import android.support.v4.util.Pair;
-import android.widget.Toast;
+import android.util.Log;
 
 import com.example.jokedisplayandroidlibrary.ApplicationConstants;
 import com.example.jokedisplayandroidlibrary.JokeDisplayActivity;
@@ -17,7 +17,7 @@ import com.google.api.client.googleapis.services.GoogleClientRequestInitializer;
 import java.io.IOException;
 
 /**
- * Created by user on 12-11-2017.
+ * Created by Akshay on 12-11-2017.
  */
 
 class EndpointsAsyncTask extends AsyncTask<Pair<Context, String>, Void, String> {
@@ -33,7 +33,7 @@ class EndpointsAsyncTask extends AsyncTask<Pair<Context, String>, Void, String> 
                     // - 10.0.2.2 is localhost's IP address in Android emulator
                     // - turn off compression when running against local devappserver
                    // .setRootUrl("http://10.0.2.2:8080/_ah/api/")
-                    .setRootUrl("http://192.168.0.2:8080/_ah/api/")
+                    .setRootUrl("http://192.168.0.5:8080/_ah/api/")
                     .setGoogleClientRequestInitializer(new GoogleClientRequestInitializer() {
                         @Override
                         public void initialize(AbstractGoogleClientRequest<?> abstractGoogleClientRequest) throws IOException {
@@ -49,7 +49,8 @@ class EndpointsAsyncTask extends AsyncTask<Pair<Context, String>, Void, String> 
         String name = params[0].second;
 
         try {
-            return myApiService.getJokes(name).execute().getData();
+            String joke = myApiService.getJokes(name).execute().getData();
+            return joke;
         } catch (IOException e) {
             return e.getMessage();
         }
