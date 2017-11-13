@@ -20,7 +20,7 @@ import static org.hamcrest.CoreMatchers.equalTo;
 import static org.hamcrest.CoreMatchers.notNullValue;
 /**
  * Created by Akshay on 13-11-2017. This test checks if the backend returns non null joke String value
- * This is checked from the extras in the intent 
+ * This is checked from the extras in the intent
  */
 @RunWith(AndroidJUnit4.class)
 public class checkBackendInstrumentedTest {
